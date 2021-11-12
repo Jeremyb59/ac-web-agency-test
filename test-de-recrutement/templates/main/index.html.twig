@@ -19,5 +19,31 @@
             <li><a href="{{path('app_login')}}">Se connecter</a></li>
         {% endif %}
     </ul>
+
+    <h2>Liste des films</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Image</th>
+                <th>Genre</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for film in films %}
+            <tr>
+                <td>{{ film.id }}</td>
+                <td>{{ film.nom }}</td>
+                <td>{% if film.image %}<img src="{{ asset('uploads/'~film.image) }}" width="100" />{% endif %}</td>
+                <td>{% for genre in film.genre %}{{ genre.nom }}{% endfor %}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}
