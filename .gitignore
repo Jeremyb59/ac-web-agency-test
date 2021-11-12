@@ -40,6 +40,7 @@ Thumbs.db
 *.app
 *.exe
 *.war
+*.zip
 
 # Large media files
 *.mp4
@@ -52,6 +53,3 @@ Thumbs.db
 # Project
 test-de-recrutement/vendor/
 test-de-recrutement/var/
-bdd/
-test-de-recrutement/.env
-myapp/
