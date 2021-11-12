@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Film index{% endblock %}
+
+{% block body %}
+    <a href="{{ path('admin') }}">Retour page d'accueil</a>
+    <h1>Film index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Image</th>
+                <th>Genre</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for film in films %}
+            <tr>
+                <td>{{ film.id }}</td>
+                <td>{{ film.nom }}</td>
+                <td>{% if film.image %}<img src="{{ asset('uploads/'~film.image) }}" width="100" />{% endif %}</td>
+                <td>{% for genre in film.genre %}{{ genre.nom }}{% endfor %}</td>
+                <td>
+                    <a href="{{ path('admin_film_show', {'id': film.id}) }}">show</a>
+                    <a href="{{ path('admin_film_edit', {'id': film.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_film_new') }}">Create new</a>
+{% endblock %}
